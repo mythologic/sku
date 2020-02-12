@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as f:
 
 setup(
     name="itemvec",
-    version="0.0.1",
+    version="0.1",
     description="🔨 Item Vectorizer",
     long_description=long_description,
     long_description_content_type="text/markdown",
