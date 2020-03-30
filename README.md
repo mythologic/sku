@@ -14,27 +14,53 @@
 pip install -U sku
 ```
 
+#### About
+
+`sku` is a scikit-learn utilities package.
+
 #### Usage
 
-Itemvec is easy to use:
+ItemEncoder:
 
-```
-from itemvec import ItemVectorizer
-import numpy as np
+```python
+from sku import ItemEncoder
 
-products = np.array([
-    'reeses, kitkat, skittles',
-    'kitkat, smarties, reeses',
-    'smarties, rockets, jubejubes'
-])
-
-iv = ItemVectorizer(delimiter=',')
-iv.fit(products)
-result = iv.transform(products)
-result.todense()
-
-# matrix([[1, 1, 1, 0, 0, 0],
-#         [1, 1, 0, 1, 0, 0],
-#         [0, 0, 0, 1, 1, 1]], dtype=int64)
+X = ['a', 'b', 'c']
+ie = ItemEncoder()
+ie.fit_transform(X)
+# [0, 1, 2]
 ```
 
+ItemVectorizer:
+
+```python
+from sku import ItemVectorizer
+
+X = ['a,b,c', 'b,c', 'a,c,d,e,f', 'b']
+iv = ItemVectorizer()
+iv.fit(X)
+iv.transform(['c,f'])
+# [0, 0, 1, 0, 0, 1]
+```
+
+NumberBinarizer:
+
+```python
+from sku import NumberBinarizer
+
+X = list(range(10))
+nb = NumberBinarizer(bins=4)
+nb.fit_transform(X)
+# [0, 0, 0, 1, 1, 2, 2, 3, 3, 3]
+```
+
+RangeScaler:
+
+```
+from sku import RangeScaler
+
+X = [30, 50, 100, 90, 80, 40]
+rs = RangeScaler(out_range=(0, 10), floor=0, round=True)
+rs.fit_transform(X)
+# [3, 5, 10, 9, 8, 4]
+```
