@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as f:
 
 setup(
     name="sku",
-    version="0.1",
+    version="0.2",
     description="scikit-learn Utilities",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -13,8 +13,7 @@ setup(
     author="Max Humber",
     author_email="max.humber@gmail.com",
     license="MIT",
-    py_modules=["sku"],
-    install_requires=["scipy", "numpy"],
+    packages=["sku"],
     python_requires=">=3.6",
     setup_requires=["setuptools>=38.6.0"],
 )
